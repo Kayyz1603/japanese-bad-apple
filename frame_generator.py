@@ -9,7 +9,6 @@ frame_amount = 3287
 with open("brightnesses.json", "r", encoding="utf-8") as f:
     data = json.load(f)
 
-#export_file = open("frames.txt", "w", encoding="utf-8")
 export_file = open("frames.txt", "w", encoding="utf-8")
 
 char_matrix = np.array([data[key] for key in data.keys()])
@@ -48,9 +47,7 @@ for frame_number in range(1, frame_amount + 1):
             elif np.sum(frame_block) < 0.01:
                 current_frame += "く"
             else:
-                #costs = np.sum(abs(char_matrix - frame_block), axis=1)
                 costs = np.sum((char_matrix - frame_block) ** 2, axis=1)
-                #costs = (np.mean(char_matrix, axis=1) - np.mean(frame_block)) ** 2
 
                 best_char_index = np.argmin(costs)
                 current_frame += char_list[best_char_index]

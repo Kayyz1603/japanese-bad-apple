@@ -25,9 +25,9 @@ def get_brightness(char):
     brightnesses = []
     for i in range(2):
         for j in range(2):
-            start_y = i * 20
-            start_x = j * 20
-            quadrant_blue = img_bgr[start_y:start_y + 20, start_x:start_x + 20, 0]
+            start_y = i * img_height / 2
+            start_x = j * img_width / 2
+            quadrant_blue = img_bgr[start_y:start_y + img_height / 2, start_x:start_x + img_width / 2, 0]
             brightnesses.append(np.mean(quadrant_blue) / 255)
 
     return brightnesses
